@@ -50,9 +50,6 @@
     price: (editData && editData.price) ?? ''
   });
 
-//   const onFinish = values => {
-//     console.log('Success:', values);
-//   };
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };

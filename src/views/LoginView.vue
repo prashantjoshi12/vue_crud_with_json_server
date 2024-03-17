@@ -57,7 +57,6 @@ import { useRouter } from 'vue-router';
   const onFinish = values => {
     login(formState).then((res)=>{
         if(res.success){
-            console.log('here');
             router.push({name : 'home'})
         }else{
             alert('Invalid Credential')

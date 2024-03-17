@@ -30,15 +30,16 @@
 <script setup>
 import { useCartStore } from "@/stores/cart";
 import { DeleteOutlined, ShoppingCartOutlined } from "@ant-design/icons-vue";
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 
 const {removeToCart  , getCartList } = useCartStore()
 const open = ref(false);
 const cartList =ref([])
+const user = computed( () =>JSON.parse(localStorage.getItem('loggedIn_user')))
+
 
 const fetchCartList = () => {
-  getCartList().then((res)=>{
-    console.log(res)
+  getCartList(user.value.id).then((res)=>{
     cartList.value = res.data
   })
 }
@@ -62,7 +63,7 @@ const afterOpenChange = (bool) => {
   console.log("open", bool);
 };
 const showDrawer = () => {
-  open.value = true;
   fetchCartList()
+  open.value = true;
 };
 </script>

@@ -13,13 +13,11 @@ export const useProductStore = defineStore('product', () => {
         return new Promise((reject, resolve) => {
             axios.post(`${url}/products`, { ...data }).then((res) => {
                 console.log(res)
-                
                 resolve(res.data)
             }).catch((err) => {
                 reject(err)
             })
         })
-
     }
 
     const updateProduct = async (id, data) => {

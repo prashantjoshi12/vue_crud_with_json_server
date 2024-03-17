@@ -1,15 +1,15 @@
 import axios from "axios";
 import { defineStore } from "pinia";
-import { ref } from "vue";
 
 const url = process.env.BASE_URL
 
 export const useCartStore = defineStore('cart' ,  () =>{
 
 
+
     const addToCart = async data => {
         return new Promise((resolve , reject)=> {
-            axios.post(`${url}/cart` ,data).then((res)=>{
+            axios.post(`${url}/cart` ,{...data , userId: user.id}).then((res)=>{
                 resolve(res)
             })
         })
@@ -25,9 +25,9 @@ export const useCartStore = defineStore('cart' ,  () =>{
     }
 
 
-    const getCartList = async() => {
+    const getCartList = async(id) => {
         return new Promise((resolve, reject)=>{
-            axios.get(`${url}/cart`).then((res)=> {
+            axios.get(`${url}/cart?userId=${id}`).then((res)=> {
                 resolve(res)
             }).catch((err)=>{
                 console.log(err);
