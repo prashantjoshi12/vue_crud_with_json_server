@@ -11,13 +11,43 @@
   display: flex;
   justify-content: space-between;
 }
-.header{
 
+.cart_total_item_count {
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background-color: rgb(108, 138, 108);
+  font-size: 20px;
+  border-radius: 20px;
 }
 
-.product{
-  
+.cart_item_box{
+  padding: 12px;
+  /* text-align: center; */
 }
+.cart_items{
+  border: 2px solid black;
+  color: black;
+  margin: 5px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.cart_total{
+  position: fixed;
+  bottom: 0;
+  width: 20%;
+  background-color: red;
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+}
+
 .login-form{
   text-align: center;
   width: 50%;

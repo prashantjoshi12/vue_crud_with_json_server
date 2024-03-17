@@ -4,7 +4,7 @@
   /></a-button>
   <a-drawer
     v-model:open="open"
-    class="custom-class"
+    class="drawer"
     root-class-name="root-class-name"
     :root-style="{ color: 'blue' }"
     
@@ -12,14 +12,16 @@
     placement="right"
     @after-open-change="afterOpenChange"
   >
-  <div>
+  <div class="cart_total_item_count">
     Total Cart Items : {{ cartList.length }}
   </div>
-    <div v-for="(items , index) in cartList">
-        <p :key="index">{{ items.productName }}<a-button @click="removeToCart(items.id); fetchCartList()"><CloseCircleOutlined/></a-button></p>
+  <div class="cart_item_box">
+    <div class="cart_items" v-for="(items , index) in cartList" :key="index">
+        {{ items.productName }}<a-button @click="removeToCart(items.id); fetchCartList()"><DeleteOutlined /></a-button>
     </div>
+  </div>
     <a-divider  />
-    <div>
+    <div class="cart_total">
       Total : {{ cartList.reduce((pre , cur)=> pre+Number(cur.price),0 ) }}
     </div>
     
@@ -27,7 +29,7 @@
 </template>
 <script setup>
 import { useCartStore } from "@/stores/cart";
-import { CloseCircleOutlined, ShoppingCartOutlined } from "@ant-design/icons-vue";
+import { DeleteOutlined, ShoppingCartOutlined } from "@ant-design/icons-vue";
 import { onMounted, ref } from "vue";
 
 const {removeToCart  , getCartList } = useCartStore()
@@ -40,6 +42,18 @@ const fetchCartList = () => {
     cartList.value = res.data
   })
 }
+
+const getItemsWithQuantity = () =>{
+  const counts = {}
+  cartList.value.forEach((x)=>{
+    counts[x.productName] = (counts[x.productName] || 0) +1 
+  })
+  return counts
+  
+}
+setTimeout(() => {
+  console.log(getItemsWithQuantity());
+}, 2000);
 
 onMounted(()=>{
   fetchCartList()

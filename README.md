@@ -5,7 +5,7 @@ This project is a simple CRUD (Create, Read, Update, Delete) application impleme
 1. Login: Users can log in to their accounts securely.
 2. Registration: New users can create an account with a unique username and password.
 3. Product CRUD: Users can perform CRUD operations on products, including adding, viewing, updating, and deleting products.
-4. Add to Cart: Users can add products to their shopping cart for future purchase.
+4. Add to Cart: Users can add products to their shopping cart for future purchases.
 Technologies Used
 5. JSON Server: To simulate a RESTful API backend with a JSON file.
 6. HTML/CSS: For the frontend user interface.
@@ -52,7 +52,7 @@ npm run dev
 
 3. Shopping Cart:
 
-* Users can add products to their shopping cart for future purchase.
+* Users can add products to their shopping cart for future purchases.
 * The cart functionality allows users to manage items they intend to buy.
 
 ## Contributions
