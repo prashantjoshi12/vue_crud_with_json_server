@@ -30,13 +30,13 @@
     </a-table>
   </div>
 
-  <a-modal v-model:open="addForm" title="Basic Modal" :footer="null">
+  <a-modal v-model:open="addForm" title="Add Product" :footer="null">
     <ProductForm @onFinish="(data) => submitAddForm(data)" />
   </a-modal>
 
   <a-modal
     v-model:open="editForm"
-    title="Basic Modal"
+    title="Edit Product"
     :footer="null"
     @cancel="editData = {}"
   >
@@ -85,10 +85,11 @@ const submitEditForm = (id, data) => {
   fetchProduct();
 };
 
-const submitAddForm = (data) => {
-  addProduct(data);
-  addForm.value = false;
-  fetchProduct();
+const submitAddForm = (data ) => {
+  addProduct(data).then(()=>{
+    addForm.value = false;
+    fetchProduct();
+  })
 };
 
 

@@ -16,6 +16,7 @@ export const useAuthStore = defineStore('auth', () => {
                 resolve(data)
             }).catch((err)=>{
                 console.log(err)
+                alert('Invalid credentials !')
             })
         })
     }

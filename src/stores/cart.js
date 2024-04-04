@@ -5,7 +5,7 @@ const url = process.env.BASE_URL
 
 export const useCartStore = defineStore('cart' ,  () =>{
 
-
+    const user = JSON.parse(localStorage.getItem('loggedIn_user'))
 
     const addToCart = async data => {
         return new Promise((resolve , reject)=> {

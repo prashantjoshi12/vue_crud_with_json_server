@@ -1,11 +1,12 @@
 <template>
     <a-form
+      ref="formRef"
       :model="formState"
       name="basic"
       :label-col="{ span: 8 }"
       :wrapper-col="{ span: 16 }"
       autocomplete="off"
-      @finish="emit('onFinish', formState)"
+      @finish="handleSubmit"
       @finishFailed="onFinishFailed"
     >
       <a-form-item
@@ -39,9 +40,10 @@
     </a-form>
   </template>
   <script setup>
-  import { reactive } from 'vue';
+  import { reactive, ref } from 'vue';
   const emit = defineEmits(["onFinish"])
   const {editData} = defineProps({editData : Object})
+  const formRef = ref()
   
   const formState = reactive({
     id: editData && editData.id,
@@ -52,5 +54,10 @@
 
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
+  };
+
+  const handleSubmit = () => {
+    emit("onFinish", formState);
+    formRef.value.resetFields();
   };
   </script>

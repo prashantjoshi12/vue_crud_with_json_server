@@ -9,16 +9,17 @@ export const useProductStore = defineStore('product', () => {
 
     const productList = ref([])
 
-    const addProduct = async data => {
-        return new Promise((reject, resolve) => {
-            axios.post(`${url}/products`, { ...data }).then((res) => {
-                console.log(res)
-                resolve(res.data)
-            }).catch((err) => {
-                reject(err)
-            })
-        })
+    const addProduct = async (data) => {
+        try {
+            const response = await axios.post(`${url}/products`, data);
+            console.log(response);
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }
+
 
     const updateProduct = async (id, data) => {
         return new Promise((reject, resolve) => {
